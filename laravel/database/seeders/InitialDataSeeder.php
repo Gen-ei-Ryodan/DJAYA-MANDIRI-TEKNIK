@@ -27,9 +27,9 @@ class InitialDataSeeder extends Seeder
                 ['label' => 'Kepuasan Pelanggan', 'value' => '98%'],
             ],
             'button1_text' => 'Konsultasi Sekarang',
-            'button1_url' => url('#contact'),
+            'button1_url' => url('#kontak'),
             'button2_text' => 'Lihat Project',
-            'button2_url' => '#projects',
+            'button2_url' => route('projects'),
             'is_active' => true,
         ]);
 

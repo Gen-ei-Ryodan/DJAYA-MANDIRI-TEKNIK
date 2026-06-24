@@ -6,17 +6,17 @@
     <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-on-background/70 z-10"></div>
         <img class="w-full h-full object-cover"
-             src="{{ $hero->background_image ? asset('storage/' . $hero->background_image) : '' }}"
+             src="{{ optional($hero)->background_image ? asset('storage/' . optional($hero)->background_image) : '' }}"
              alt="Hero Background">
     </div>
 
     <div class="relative z-20 w-full px-4 md:px-gutter max-w-container-max mx-auto text-on-primary py-20 md:py-28 lg:py-36">
         <div class="max-w-2xl lg:max-w-3xl reveal active">
             <h1 class="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl mb-3 md:mb-5 leading-tight font-bold" style="font-family: Poppins">
-                {{ $hero->title ?? 'Solusi Penangkal Petir Profesional untuk Perlindungan Bangunan Anda' }}
+                {{ optional($hero)->title ?? 'Solusi Penangkal Petir Profesional untuk Perlindungan Bangunan Anda' }}
             </h1>
             <p class="text-sm sm:text-base lg:text-lg text-on-primary/90 mb-5 md:mb-7 max-w-xl lg:max-w-2xl leading-relaxed">
-                {{ $hero->description ?? 'Djaja Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}
+                {{ optional($hero)->description ?? 'Djaja Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}
             </p>
 
             {{-- Badge Tags --}}
@@ -28,13 +28,13 @@
 
             {{-- Buttons --}}
             <div class="flex flex-col sm:flex-row gap-3 md:gap-4">
-                <a href="{{ $hero->button1_url ?? '#kontak' }}"
+                <a href="{{ optional($hero)->button1_url ?? '#kontak' }}"
                    class="bg-tertiary-fixed text-on-tertiary-fixed px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-sm md:text-lg hover:bg-tertiary-fixed-dim transition-colors shadow-xl text-center">
-                    {{ $hero->button1_text ?? 'Konsultasi Sekarang' }}
+                    {{ optional($hero)->button1_text ?? 'Konsultasi Sekarang' }}
                 </a>
-                <a href="{{ $hero->button2_url ?? route('projects') }}"
+                <a href="{{ optional($hero)->button2_url ?? route('projects') }}"
                    class="border-2 border-on-primary text-on-primary px-6 md:px-8 py-3 md:py-4 rounded-lg font-bold text-sm md:text-lg hover:bg-on-primary hover:text-on-background transition-all text-center">
-                    {{ $hero->button2_text ?? 'Lihat Project' }}
+                    {{ optional($hero)->button2_text ?? 'Lihat Project' }}
                 </a>
             </div>
         </div>
@@ -45,7 +45,7 @@
 <section class="relative z-10 -mt-10 md:-mt-16">
     <div class="max-w-container-max mx-auto px-4 md:px-gutter">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            @php $stats = $hero->statistics ?? []; @endphp
+            @php $stats = optional($hero)->statistics ?? []; @endphp
             @forelse($stats as $stat)
             <div class="bg-surface-container-lowest p-4 md:p-8 rounded-xl md:rounded-2xl shadow-lg flex items-center gap-4">
                 <div class="w-10 h-10 md:w-14 md:h-14 bg-secondary-container flex items-center justify-center rounded-full text-secondary shrink-0">
@@ -85,7 +85,7 @@
             <div class="absolute -top-4 md:-top-6 -left-4 md:-left-6 w-20 md:w-32 h-20 md:h-32 bg-secondary-container rounded-2xl -z-10"></div>
             <div class="rounded-2xl overflow-hidden shadow-2xl">
                 <img class="w-full h-full object-cover aspect-square"
-                     src="{{ is_array($about->company_images) && isset($about->company_images[0]) && $about->company_images[0] ? asset('storage/' . $about->company_images[0]) : '' }}"
+                     src="{{ is_array(optional($about)->company_images) && isset(optional($about)->company_images[0]) && optional($about)->company_images[0] ? asset('storage/' . optional($about)->company_images[0]) : '' }}"
                      alt="Tentang Djaja Mandiri Teknik">
             </div>
             <div class="absolute -bottom-6 md:-bottom-10 -right-4 md:-right-10 bg-on-background p-4 md:p-8 rounded-xl md:rounded-2xl text-on-primary shadow-2xl hidden md:block">
@@ -390,9 +390,13 @@
             </div>
 
             <div class="rounded-2xl overflow-hidden h-48 md:h-64 grayscale hover:grayscale-0 transition-all duration-500 shadow-lg border border-outline-variant/30">
-                <img class="w-full h-full object-cover"
-                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhMbK5sYtLFzjbMEIMvCx49pwnmEQ0uBdxbtjHrtWMpIt8Cuw42XRV0pz72oqMhYR7oahUgldYLddjJJeShfeVTl2NhX1d8o3vVIPAv8ls9CLGqro2u6CAYF8b-CGnhG-ZceMDHdxj_BePEmzc0vcuzwoVWSIQGXQjGl9McibW6talK-HxzBrKIAobOvLYRvVUi8bX1UP-45xGzx1dgR6sFVNhdlzW49nCIQEUMGwO7eeLCJpBcWyFT-K6VgEU33XnW-u1CrL3fFM"
-                     alt="Map">
+                <iframe class="w-full h-full"
+                        src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1610.5909132894062!2d112.72667508131664!3d-7.353249709321018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sJl.%20Kedungrejo%20Timur%20Gg%20Satria%20RT%206%20RW%201%2C%20Kec.%20Waru%2C%20Kab.%20Sidoarjo!5e0!3m2!1sid!2sid!4v1782274670426!5m2!1sid!2sid"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
             </div>
         </div>
 
