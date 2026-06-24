@@ -49,20 +49,17 @@
 
         @if(count($images) > 1)
         <div class="absolute inset-0 flex items-center justify-between px-2 md:px-4 pointer-events-none">
-            <button onclick="prevSlide()"
-                    class="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
+            <button class="carousel-prev pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
                 <span class="material-symbols-outlined text-xl md:text-2xl">chevron_left</span>
             </button>
-            <button onclick="nextSlide()"
-                    class="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
+            <button class="carousel-next pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
                 <span class="material-symbols-outlined text-xl md:text-2xl">chevron_right</span>
             </button>
         </div>
 
         <div class="absolute bottom-3 md:bottom-4 left-0 right-0 flex justify-center gap-2">
             @foreach($images as $index => $img)
-            <button onclick="goToSlide({{ $index }})"
-                    class="carousel-dot h-2 md:h-3 rounded-full transition-all duration-300 {{ $index === 0 ? 'bg-tertiary-fixed w-6 md:w-8' : 'bg-on-primary/50 w-2 md:w-3' }}"
+            <button class="carousel-dot h-2 md:h-3 rounded-full transition-all duration-300 {{ $index === 0 ? 'bg-tertiary-fixed w-6 md:w-8' : 'bg-on-primary/50 w-2 md:w-3' }}"
                     data-index="{{ $index }}">
             </button>
             @endforeach
@@ -72,9 +69,14 @@
 </div>
 
 <script>
-    (function() {
-        const slides = document.querySelectorAll('#project-carousel .carousel-slide');
-        const dots = document.querySelectorAll('#project-carousel .carousel-dot');
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.getElementById('project-carousel');
+        if (!carousel) return;
+
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const dots = carousel.querySelectorAll('.carousel-dot');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
         let currentIndex = 0;
         let interval;
 
@@ -94,27 +96,24 @@
             currentIndex = index;
         }
 
-        window.nextSlide = function() {
-            const next = (currentIndex + 1) % slides.length;
-            showSlide(next);
+        function nextSlide() {
+            showSlide((currentIndex + 1) % slides.length);
             resetAutoplay();
-        };
+        }
 
-        window.prevSlide = function() {
-            const prev = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(prev);
+        function prevSlide() {
+            showSlide((currentIndex - 1 + slides.length) % slides.length);
             resetAutoplay();
-        };
+        }
 
-        window.goToSlide = function(index) {
+        function goToSlide(index) {
             showSlide(index);
             resetAutoplay();
-        };
+        }
 
         function startAutoplay() {
-            interval = setInterval(() => {
-                const next = (currentIndex + 1) % slides.length;
-                showSlide(next);
+            interval = setInterval(function() {
+                showSlide((currentIndex + 1) % slides.length);
             }, 5000);
         }
 
@@ -123,10 +122,19 @@
             startAutoplay();
         }
 
+        // Event listeners
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        dots.forEach(function(dot) {
+            dot.addEventListener('click', function() {
+                goToSlide(parseInt(this.dataset.index));
+            });
+        });
+
         // Initialize
         showSlide(0);
         if (slides.length > 1) startAutoplay();
-    })();
+    });
 </script>
 @elseif($project->thumbnail)
 <div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg bg-surface-container-low flex items-center justify-center h-[300px] sm:h-[400px] md:h-[500px]">
