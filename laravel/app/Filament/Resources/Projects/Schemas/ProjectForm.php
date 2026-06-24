@@ -28,7 +28,12 @@ class ProjectForm
                     ->image()
                     ->directory('projects')
                     ->disk('public'),
-                Textarea::make('gallery')
+                FileUpload::make('gallery')
+                    ->image()
+                    ->multiple()
+                    ->reorderable()
+                    ->directory('projects')
+                    ->disk('public')
                     ->columnSpanFull(),
                 Textarea::make('description')
                     ->columnSpanFull(),

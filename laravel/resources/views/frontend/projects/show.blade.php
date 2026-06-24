@@ -18,11 +18,123 @@
 
 <section class="py-12 md:py-20 bg-surface">
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
-        @if($project->thumbnail)
-        <div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg">
-            <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full aspect-video object-cover">
+@php
+    $images = [];
+    if ($project->thumbnail) {
+        $images[] = $project->thumbnail;
+    }
+    if ($project->gallery && is_array($project->gallery)) {
+        foreach ($project->gallery as $img) {
+            if ($img && $img !== $project->thumbnail) {
+                $images[] = $img;
+            }
+        }
+    }
+@endphp
+
+@if(!empty($images))
+<div id="project-carousel" class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg bg-surface-container-low">
+    <div class="relative w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[550px] overflow-hidden">
+        <div class="carousel-track h-full">
+            @foreach($images as $index => $img)
+            <div class="carousel-slide absolute inset-0 flex items-center justify-center p-4 {{ $index === 0 ? 'active' : '' }}"
+                 style="opacity: {{ $index === 0 ? '1' : '0' }}; z-index: {{ $index === 0 ? '1' : '0' }};"
+                 data-index="{{ $index }}">
+                <img src="{{ asset('storage/' . $img) }}"
+                     alt="{{ $project->title }} - {{ $index + 1 }}"
+                     class="max-w-full max-h-full w-auto h-auto object-contain rounded-xl">
+            </div>
+            @endforeach
+        </div>
+
+        @if(count($images) > 1)
+        <div class="absolute inset-0 flex items-center justify-between px-2 md:px-4 pointer-events-none">
+            <button onclick="prevSlide()"
+                    class="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
+                <span class="material-symbols-outlined text-xl md:text-2xl">chevron_left</span>
+            </button>
+            <button onclick="nextSlide()"
+                    class="pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
+                <span class="material-symbols-outlined text-xl md:text-2xl">chevron_right</span>
+            </button>
+        </div>
+
+        <div class="absolute bottom-3 md:bottom-4 left-0 right-0 flex justify-center gap-2">
+            @foreach($images as $index => $img)
+            <button onclick="goToSlide({{ $index }})"
+                    class="carousel-dot h-2 md:h-3 rounded-full transition-all duration-300 {{ $index === 0 ? 'bg-tertiary-fixed w-6 md:w-8' : 'bg-on-primary/50 w-2 md:w-3' }}"
+                    data-index="{{ $index }}">
+            </button>
+            @endforeach
         </div>
         @endif
+    </div>
+</div>
+
+<script>
+    (function() {
+        const slides = document.querySelectorAll('#project-carousel .carousel-slide');
+        const dots = document.querySelectorAll('#project-carousel .carousel-dot');
+        let currentIndex = 0;
+        let interval;
+
+        function showSlide(index) {
+            slides.forEach((s, i) => {
+                s.classList.toggle('active', i === index);
+                s.style.opacity = i === index ? '1' : '0';
+                s.style.zIndex = i === index ? '1' : '0';
+            });
+            dots.forEach((d, i) => {
+                if (i === index) {
+                    d.className = 'carousel-dot bg-tertiary-fixed w-6 md:w-8 h-2 md:h-3 rounded-full transition-all duration-300';
+                } else {
+                    d.className = 'carousel-dot bg-on-primary/50 w-2 md:w-3 h-2 md:h-3 rounded-full transition-all duration-300';
+                }
+            });
+            currentIndex = index;
+        }
+
+        window.nextSlide = function() {
+            const next = (currentIndex + 1) % slides.length;
+            showSlide(next);
+            resetAutoplay();
+        };
+
+        window.prevSlide = function() {
+            const prev = (currentIndex - 1 + slides.length) % slides.length;
+            showSlide(prev);
+            resetAutoplay();
+        };
+
+        window.goToSlide = function(index) {
+            showSlide(index);
+            resetAutoplay();
+        };
+
+        function startAutoplay() {
+            interval = setInterval(() => {
+                const next = (currentIndex + 1) % slides.length;
+                showSlide(next);
+            }, 5000);
+        }
+
+        function resetAutoplay() {
+            clearInterval(interval);
+            startAutoplay();
+        }
+
+        // Initialize
+        showSlide(0);
+        if (slides.length > 1) startAutoplay();
+    })();
+</script>
+@elseif($project->thumbnail)
+<div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg bg-surface-container-low flex items-center justify-center h-[300px] sm:h-[400px] md:h-[500px]">
+    <img src="{{ asset('storage/' . $project->thumbnail) }}"
+         alt="{{ $project->title }}"
+         class="max-w-full max-h-full w-auto h-auto object-contain p-4">
+</div>
+@endif
 
         <div class="text-sm md:text-base text-on-surface-variant leading-relaxed">
             {!! nl2br($project->description) !!}
