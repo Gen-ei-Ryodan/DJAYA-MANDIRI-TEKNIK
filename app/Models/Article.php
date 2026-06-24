@@ -19,6 +19,12 @@ class Article extends Model
         'read_time' => 'integer',
     ];
 
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.latest_articles'));
+        static::deleted(fn () => cache()->forget('home.latest_articles'));
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(ArticleCategory::class, 'category_id');

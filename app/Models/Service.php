@@ -14,4 +14,10 @@ class Service extends Model
         'is_active' => 'boolean',
         'order' => 'integer',
     ];
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.services'));
+        static::deleted(fn () => cache()->forget('home.services'));
+    }
 }

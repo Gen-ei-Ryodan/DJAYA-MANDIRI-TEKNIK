@@ -16,4 +16,10 @@ class HeroSection extends Model
         'statistics' => 'json',
         'is_active' => 'boolean',
     ];
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.hero'));
+        static::deleted(fn () => cache()->forget('home.hero'));
+    }
 }

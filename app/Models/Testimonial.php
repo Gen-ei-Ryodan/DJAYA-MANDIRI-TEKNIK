@@ -16,4 +16,10 @@ class Testimonial extends Model
         'order' => 'integer',
         'is_active' => 'boolean',
     ];
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.testimonials'));
+        static::deleted(fn () => cache()->forget('home.testimonials'));
+    }
 }
