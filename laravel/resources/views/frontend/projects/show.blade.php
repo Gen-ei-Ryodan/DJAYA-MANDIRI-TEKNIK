@@ -48,7 +48,7 @@
         </div>
 
         @if(count($images) > 1)
-        <div class="absolute inset-0 flex items-center justify-between px-2 md:px-4 pointer-events-none">
+        <div class="absolute inset-0 flex items-center justify-between px-2 md:px-4 pointer-events-none z-10">
             <button class="carousel-prev pointer-events-auto w-10 h-10 md:w-12 md:h-12 rounded-full bg-on-background/60 text-on-primary flex items-center justify-center hover:bg-on-background/80 transition-all backdrop-blur-sm shadow-lg">
                 <span class="material-symbols-outlined text-xl md:text-2xl">chevron_left</span>
             </button>
@@ -57,7 +57,7 @@
             </button>
         </div>
 
-        <div class="absolute bottom-3 md:bottom-4 left-0 right-0 flex justify-center gap-2">
+        <div class="absolute bottom-3 md:bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
             @foreach($images as $index => $img)
             <button class="carousel-dot h-2 md:h-3 rounded-full transition-all duration-300 {{ $index === 0 ? 'bg-tertiary-fixed w-6 md:w-8' : 'bg-on-primary/50 w-2 md:w-3' }}"
                     data-index="{{ $index }}">
