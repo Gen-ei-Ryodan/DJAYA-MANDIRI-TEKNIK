@@ -19,6 +19,12 @@ class Project extends Model
         'featured' => 'boolean',
     ];
 
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.featured_projects'));
+        static::deleted(fn () => cache()->forget('home.featured_projects'));
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(ProjectCategory::class, 'category_id');

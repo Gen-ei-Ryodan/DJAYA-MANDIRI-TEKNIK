@@ -15,4 +15,10 @@ class WhyChooseUs extends Model
     protected $casts = [
         'order' => 'integer',
     ];
+
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.why_choose_us'));
+        static::deleted(fn () => cache()->forget('home.why_choose_us'));
+    }
 }

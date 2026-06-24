@@ -19,6 +19,12 @@ class Product extends Model
         'order' => 'integer',
     ];
 
+    protected static function booted(): void
+    {
+        static::saved(fn () => cache()->forget('home.featured_products'));
+        static::deleted(fn () => cache()->forget('home.featured_products'));
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(ProductCategory::class, 'category_id');
