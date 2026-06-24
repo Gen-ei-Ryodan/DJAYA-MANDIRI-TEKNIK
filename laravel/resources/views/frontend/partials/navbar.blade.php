@@ -2,7 +2,7 @@
     <div class="flex justify-between items-center w-full px-4 md:px-gutter max-w-container-max mx-auto h-full">
         {{-- Logo --}}
         <a href="{{ route('home') }}" class="text-base md:text-headline-sm font-bold text-on-primary tracking-tight truncate max-w-[200px] md:max-w-none">
-            {{ $settings->getCompanyName() ?? 'DJAYA MANDIRI TEKNIK' }}
+            {{ $settings->getCompanyName() ?? 'DJAJA MANDIRI TEKNIK' }}
         </a>
 
         {{-- Desktop Menu --}}

@@ -58,7 +58,7 @@ class AdminSeeder extends Seeder
         // Create Super Admin
         User::create([
             'name' => 'Super Admin',
-            'email' => 'admin@djayamandiriteknik.com',
+            'email' => 'admin@djajamandiriteknik.com',
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
         ])->assignRole('super_admin');

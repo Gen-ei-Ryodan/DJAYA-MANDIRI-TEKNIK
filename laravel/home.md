@@ -3,7 +3,7 @@
 <html class="scroll-smooth" lang="id"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Djaya Mandiri Teknik | Solusi Penangkal Petir Profesional</title>
+<title>Djaja Mandiri Teknik | Solusi Penangkal Petir Profesional</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -126,7 +126,7 @@
 <header class="docked full-width top-0 sticky z-50 bg-on-background/95 backdrop-blur-md shadow-md h-20 transition-all duration-300">
 <div class="flex justify-between items-center w-full px-gutter max-w-container-max mx-auto h-full">
 <div class="font-headline-sm text-headline-sm font-bold text-on-primary tracking-tight">
-                DJAYA MANDIRI TEKNIK
+                DJAJA MANDIRI TEKNIK
             </div>
 <nav class="hidden lg:flex items-center gap-8">
 <a class="text-tertiary-fixed font-bold border-b-2 border-tertiary-fixed pb-1 font-label-md text-label-md" href="#">Home</a>
@@ -154,7 +154,7 @@
                     Solusi Penangkal Petir Profesional untuk Perlindungan Bangunan Anda
                 </h1>
 <p class="font-body-lg text-body-lg text-on-primary/90 mb-8 max-w-2xl">
-                    Djaya Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.
+                    Djaja Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.
                 </p>
 <div class="flex flex-wrap gap-4 mb-12 items-center">
 <span class="px-4 py-1 bg-tertiary-fixed/20 border border-tertiary-fixed/30 rounded-full text-sm font-medium">Perlindungan Maksimal</span>
@@ -228,7 +228,7 @@
 </div>
 <div class="reveal">
 <span class="text-on-tertiary-container font-label-md tracking-widest uppercase mb-4 block">Tentang Kami</span>
-<h2 class="font-headline-md text-headline-md text-on-background mb-6">Tentang Djaya Mandiri Teknik</h2>
+<h2 class="font-headline-md text-headline-md text-on-background mb-6">Tentang Djaja Mandiri Teknik</h2>
 <p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
                     Kami adalah perusahaan spesialis dalam bidang sistem proteksi petir (lightning protection system) yang berlokasi di Sidoarjo, Jawa Timur. Berkomitmen pada keselamatan dan kualitas, kami menyediakan solusi komprehensif mulai dari konsultasi, penyediaan material hingga instalasi profesional di berbagai jenis bangunan.
                 </p>
@@ -311,7 +311,7 @@
 <div class="max-w-container-max mx-auto px-gutter">
 <div class="text-center mb-16 reveal">
 <span class="text-on-tertiary-container font-label-md tracking-widest uppercase mb-4 block">Why Us</span>
-<h2 class="font-headline-md text-headline-md text-on-background">Mengapa Memilih Djaya Mandiri Teknik?</h2>
+<h2 class="font-headline-md text-headline-md text-on-background">Mengapa Memilih Djaja Mandiri Teknik?</h2>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
 <!-- Grid Items -->
@@ -542,7 +542,7 @@
 </div>
 <div>
 <h4 class="font-bold text-on-background">Email Bisnis</h4>
-<p class="text-on-surface-variant">info@djayamandiriteknik.com</p>
+<p class="text-on-surface-variant">info@djajamandiriteknik.com</p>
 </div>
 </div>
 </div>
@@ -594,9 +594,9 @@
 <footer class="bg-on-background dark:bg-on-background text-on-primary border-t border-outline-variant/20">
 <div class="grid grid-cols-1 md:grid-cols-4 gap-stack-lg px-gutter py-section-padding max-w-container-max mx-auto">
 <div class="md:col-span-1">
-<span class="font-headline-sm text-headline-sm font-bold text-on-primary mb-4 block">DJAYA MANDIRI TEKNIK</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-primary mb-4 block">DJAJA MANDIRI TEKNIK</span>
 <p class="font-body-md text-body-md text-on-primary/60 mb-6 leading-relaxed">
-                    © 2024 Djaya Mandiri Teknik. All rights reserved. Premium Lightning Protection Systems.
+                    © 2024 Djaja Mandiri Teknik. All rights reserved. Premium Lightning Protection Systems.
                 </p>
 <div class="flex gap-4">
 <a class="w-10 h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#"><span class="material-symbols-outlined">public</span></a>

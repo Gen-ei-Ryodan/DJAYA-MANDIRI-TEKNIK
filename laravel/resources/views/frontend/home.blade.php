@@ -16,7 +16,7 @@
                 {{ $hero->title ?? 'Solusi Penangkal Petir Profesional untuk Perlindungan Bangunan Anda' }}
             </h1>
             <p class="text-sm sm:text-base lg:text-lg text-on-primary/90 mb-5 md:mb-7 max-w-xl lg:max-w-2xl leading-relaxed">
-                {{ $hero->description ?? 'Djaya Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}
+                {{ $hero->description ?? 'Djaja Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}
             </p>
 
             {{-- Badge Tags --}}
@@ -86,7 +86,7 @@
             <div class="rounded-2xl overflow-hidden shadow-2xl">
                 <img class="w-full h-full object-cover aspect-square"
                      src="{{ is_array($about->company_images) && isset($about->company_images[0]) && $about->company_images[0] ? asset('storage/' . $about->company_images[0]) : '' }}"
-                     alt="Tentang Djaya Mandiri Teknik">
+                     alt="Tentang Djaja Mandiri Teknik">
             </div>
             <div class="absolute -bottom-6 md:-bottom-10 -right-4 md:-right-10 bg-on-background p-4 md:p-8 rounded-xl md:rounded-2xl text-on-primary shadow-2xl hidden md:block">
                 <div class="text-2xl md:text-4xl font-bold text-tertiary-fixed mb-1">10+ Thn</div>
@@ -95,7 +95,7 @@
         </div>
         <div class="reveal">
             <span class="text-on-tertiary-container font-label-md tracking-widest uppercase mb-3 md:mb-4 block text-xs md:text-sm">Tentang Kami</span>
-            <h2 class="text-2xl md:text-headline-md text-on-background mb-4 md:mb-6 font-bold" style="font-family: Poppins">Tentang Djaya Mandiri Teknik</h2>
+            <h2 class="text-2xl md:text-headline-md text-on-background mb-4 md:mb-6 font-bold" style="font-family: Poppins">Tentang Djaja Mandiri Teknik</h2>
             <p class="text-sm md:text-body-md text-on-surface-variant mb-6 md:mb-8 leading-relaxed">
                 {{ $about->description ?? 'Kami adalah perusahaan spesialis dalam bidang sistem proteksi petir (lightning protection system) yang berlokasi di Sidoarjo, Jawa Timur.' }}
             </p>
@@ -164,7 +164,7 @@
     <div class="max-w-container-max mx-auto px-gutter">
         <div class="text-center mb-10 md:mb-16 reveal">
             <span class="text-on-tertiary-container font-label-md tracking-widest uppercase mb-2 md:mb-4 block text-xs md:text-sm">Why Us</span>
-            <h2 class="text-2xl md:text-headline-md text-on-background font-bold" style="font-family: Poppins">Mengapa Memilih Djaya Mandiri Teknik?</h2>
+            <h2 class="text-2xl md:text-headline-md text-on-background font-bold" style="font-family: Poppins">Mengapa Memilih Djaja Mandiri Teknik?</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 reveal">
             @forelse($whyChooseUs as $item)
@@ -384,7 +384,7 @@
                     </div>
                     <div class="min-w-0">
                         <h4 class="font-bold text-sm md:text-base text-on-background">Email Bisnis</h4>
-                        <p class="text-xs md:text-sm text-on-surface-variant">{{ $contact->email ?? 'info@djayamandiriteknik.com' }}</p>
+                        <p class="text-xs md:text-sm text-on-surface-variant">{{ $contact->email ?? 'info@djajamandiriteknik.com' }}</p>
                     </div>
                 </div>
             </div>

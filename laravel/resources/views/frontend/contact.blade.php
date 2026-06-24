@@ -37,7 +37,7 @@
                     </div>
                     <div>
                         <h4 class="font-bold text-on-background font-heading">Email</h4>
-                        <p class="text-on-surface-variant text-sm mt-1">{{ $contact->email ?? 'info@djayamandiriteknik.com' }}</p>
+                        <p class="text-on-surface-variant text-sm mt-1">{{ $contact->email ?? 'info@djajamandiriteknik.com' }}</p>
                     </div>
                 </div>
                 <div class="flex items-start gap-4">

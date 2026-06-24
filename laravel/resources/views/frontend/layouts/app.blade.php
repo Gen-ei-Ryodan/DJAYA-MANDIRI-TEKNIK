@@ -6,13 +6,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- SEO --}}
-    <title>{{ $seo->meta_title ?? 'DJAYA MANDIRI TEKNIK - Solusi Penangkal Petir Profesional' }}</title>
-    <meta name="description" content="{{ $seo->meta_description ?? 'Djaya Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}">
+    <title>{{ $seo->meta_title ?? 'DJAJA MANDIRI TEKNIK - Solusi Penangkal Petir Profesional' }}</title>
+    <meta name="description" content="{{ $seo->meta_description ?? 'Djaja Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}">
     <meta name="keywords" content="{{ $seo->keywords ?? 'penangkal petir, jasa penangkal petir, material penangkal petir, sistem proteksi petir' }}">
-    <meta name="author" content="DJAYA MANDIRI TEKNIK">
+    <meta name="author" content="DJAJA MANDIRI TEKNIK">
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="{{ $seo->og_title ?? $seo->meta_title ?? 'DJAYA MANDIRI TEKNIK' }}">
+    <meta property="og:title" content="{{ $seo->og_title ?? $seo->meta_title ?? 'DJAJA MANDIRI TEKNIK' }}">
     <meta property="og:description" content="{{ $seo->og_description ?? $seo->meta_description ?? '' }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
@@ -20,7 +20,7 @@
 
     {{-- Twitter Card --}}
     <meta name="twitter:card" content="{{ $seo->twitter_card ?? 'summary_large_image' }}">
-    <meta name="twitter:title" content="{{ $seo->meta_title ?? 'DJAYA MANDIRI TEKNIK' }}">
+    <meta name="twitter:title" content="{{ $seo->meta_title ?? 'DJAJA MANDIRI TEKNIK' }}">
     <meta name="twitter:description" content="{{ $seo->meta_description ?? '' }}">
 
     {{-- Favicon --}}

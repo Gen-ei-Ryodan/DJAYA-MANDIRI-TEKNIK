@@ -20,7 +20,7 @@ class SettingService
 
     public function getCompanyName(): string
     {
-        return $this->get('company_name', 'DJAYA MANDIRI TEKNIK');
+        return $this->get('company_name', 'DJAJA MANDIRI TEKNIK');
     }
 
     public function getWhatsApp(): string
@@ -30,7 +30,7 @@ class SettingService
 
     public function getEmail(): string
     {
-        return $this->get('company_email', 'info@djayamandiriteknik.com');
+        return $this->get('company_email', 'info@djajamandiriteknik.com');
     }
 
     public function getLogo(): string

@@ -37,7 +37,7 @@ class AdminPanelProvider extends PanelProvider
                 'info' => Color::hex('#2563EB'),
             ])
             ->font('Inter')
-            ->brandName('DJAYA MANDIRI TEKNIK')
+            ->brandName('DJAJA MANDIRI TEKNIK')
             ->brandLogo(asset('images/logo.png'))
             ->brandLogoHeight('2.5rem')
             ->favicon(asset('images/favicon.ico'))

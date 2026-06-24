@@ -3,10 +3,10 @@
         {{-- About --}}
         <div class="sm:col-span-2 md:col-span-1">
             <a href="{{ route('home') }}" class="font-bold text-base md:text-headline-sm text-on-primary mb-3 md:mb-4 block">
-                {{ $settings->getCompanyName() ?? 'DJAYA MANDIRI TEKNIK' }}
+                {{ $settings->getCompanyName() ?? 'DJAJA MANDIRI TEKNIK' }}
             </a>
             <p class="text-sm md:text-body-md text-on-primary/60 mb-6 leading-relaxed">
-                &copy; {{ date('Y') }} {{ $settings->getCompanyName() ?? 'DJAYA MANDIRI TEKNIK' }}. All rights reserved. Premium Lightning Protection Systems.
+                &copy; {{ date('Y') }} {{ $settings->getCompanyName() ?? 'DJAJA MANDIRI TEKNIK' }}. All rights reserved. Premium Lightning Protection Systems.
             </p>
             <div class="flex gap-3 md:gap-4">
                 <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#">
