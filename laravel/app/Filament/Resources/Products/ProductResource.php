@@ -18,7 +18,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationGroup = 'Katalog';
+    protected static string|\UnitEnum|null $navigationGroup = 'Katalog';
 
     protected static ?int $navigationSort = 2;
 

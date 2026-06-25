@@ -18,7 +18,7 @@ class WhyChooseUsResource extends Resource
 {
     protected static ?string $model = WhyChooseUs::class;
 
-    protected static ?string $navigationGroup = 'Konten Website';
+    protected static string|\UnitEnum|null $navigationGroup = 'Konten Website';
 
     protected static ?int $navigationSort = 4;
 

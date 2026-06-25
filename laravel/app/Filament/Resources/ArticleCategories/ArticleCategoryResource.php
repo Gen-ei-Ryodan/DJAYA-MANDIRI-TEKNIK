@@ -18,7 +18,7 @@ class ArticleCategoryResource extends Resource
 {
     protected static ?string $model = ArticleCategory::class;
 
-    protected static ?string $navigationGroup = 'Katalog';
+    protected static string|\UnitEnum|null $navigationGroup = 'Katalog';
 
     protected static ?int $navigationSort = 5;
 

@@ -18,7 +18,7 @@ class ProjectCategoryResource extends Resource
 {
     protected static ?string $model = ProjectCategory::class;
 
-    protected static ?string $navigationGroup = 'Katalog';
+    protected static string|\UnitEnum|null $navigationGroup = 'Katalog';
 
     protected static ?int $navigationSort = 3;
 

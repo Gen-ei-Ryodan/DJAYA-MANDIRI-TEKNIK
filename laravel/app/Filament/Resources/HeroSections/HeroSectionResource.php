@@ -18,7 +18,7 @@ class HeroSectionResource extends Resource
 {
     protected static ?string $model = HeroSection::class;
 
-    protected static ?string $navigationGroup = 'Konten Website';
+    protected static string|\UnitEnum|null $navigationGroup = 'Konten Website';
 
     protected static ?int $navigationSort = 1;
 

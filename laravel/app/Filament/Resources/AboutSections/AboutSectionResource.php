@@ -18,7 +18,7 @@ class AboutSectionResource extends Resource
 {
     protected static ?string $model = AboutSection::class;
 
-    protected static ?string $navigationGroup = 'Konten Website';
+    protected static string|\UnitEnum|null $navigationGroup = 'Konten Website';
 
     protected static ?int $navigationSort = 2;
 

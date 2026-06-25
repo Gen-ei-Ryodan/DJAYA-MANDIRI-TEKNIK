@@ -18,7 +18,7 @@ class SeoMetaResource extends Resource
 {
     protected static ?string $model = SeoMeta::class;
 
-    protected static ?string $navigationGroup = 'Pengaturan';
+    protected static string|\UnitEnum|null $navigationGroup = 'Pengaturan';
 
     protected static ?int $navigationSort = 3;
 
