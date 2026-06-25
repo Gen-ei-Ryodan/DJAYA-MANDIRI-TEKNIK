@@ -18,7 +18,11 @@ class WhyChooseUsResource extends Resource
 {
     protected static ?string $model = WhyChooseUs::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationGroup = 'Konten Website';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedStar;
 
     public static function form(Schema $schema): Schema
     {

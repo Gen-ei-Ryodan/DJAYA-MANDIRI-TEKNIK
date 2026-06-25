@@ -18,7 +18,11 @@ class AboutSectionResource extends Resource
 {
     protected static ?string $model = AboutSection::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationGroup = 'Konten Website';
+
+    protected static ?int $navigationSort = 2;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedInformationCircle;
 
     public static function form(Schema $schema): Schema
     {

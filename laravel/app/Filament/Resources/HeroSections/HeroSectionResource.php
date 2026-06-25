@@ -18,7 +18,11 @@ class HeroSectionResource extends Resource
 {
     protected static ?string $model = HeroSection::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $navigationGroup = 'Konten Website';
+
+    protected static ?int $navigationSort = 1;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedHome;
 
     public static function form(Schema $schema): Schema
     {
