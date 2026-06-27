@@ -18,6 +18,8 @@ class TestimonialResource extends Resource
 {
     protected static ?string $model = Testimonial::class;
 
+    protected static bool $shouldRegisterNavigation = false;
+
     protected static string|\UnitEnum|null $navigationGroup = 'Konten Website';
 
     protected static ?int $navigationSort = 5;
