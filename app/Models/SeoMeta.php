@@ -11,5 +11,6 @@ class SeoMeta extends Model
     protected $fillable = [
         'page', 'meta_title', 'meta_description', 'keywords',
         'og_title', 'og_description', 'og_image', 'twitter_card',
+        'canonical_url', 'robots',
     ];
 }

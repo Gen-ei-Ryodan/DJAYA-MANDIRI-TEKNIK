@@ -1,33 +1,28 @@
 <?php
 
-namespace App\Filament\Resources\SeoMetas\Tables;
+namespace App\Filament\Resources\CityLandings\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class SeoMetasTable
+class CityLandingsTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('page')
-                    ->searchable(),
-                TextColumn::make('meta_title')
-                    ->searchable(),
-                TextColumn::make('keywords')
-                    ->searchable(),
-                TextColumn::make('canonical_url')
-                    ->label('Canonical')
-                    ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('robots')
-                    ->label('Robots')
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('city.name')
+                    ->label('Kota')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('title')
+                    ->label('Judul')
+                    ->searchable()
+                    ->limit(40),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -36,10 +31,11 @@ class SeoMetasTable
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                IconColumn::make('is_active')
+                    ->boolean()
+                    ->sortable(),
             ])
-            ->filters([
-                //
-            ])
+            ->filters([])
             ->recordActions([
                 EditAction::make(),
             ])
