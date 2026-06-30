@@ -38,6 +38,6 @@ Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
 // SEO
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', function () {
-    $content = "User-agent: *\nAllow: /\nSitemap: " . url('/sitemap.xml');
+    $content = "User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /filament\nDisallow: /livewire\n\nSitemap: " . url('/sitemap.xml');
     return response($content, 200)->header('Content-Type', 'text/plain');
 });

@@ -3,9 +3,11 @@
 @section('content')
 <section class="bg-on-background py-16 md:py-24 lg:py-32">
     <div class="max-w-container-max mx-auto px-4 md:px-gutter">
-        <a href="{{ route('services') }}" class="text-tertiary-fixed font-bold text-xs md:text-sm flex items-center gap-2 mb-4 md:mb-6 hover:gap-3 transition-all">
-            <span class="material-symbols-outlined text-sm md:text-base">arrow_back</span>Kembali ke Layanan
-        </a>
+        @include('frontend.partials.breadcrumb', ['crumbs' => [
+            ['label' => 'Beranda', 'url' => route('home')],
+            ['label' => 'Layanan', 'url' => route('services')],
+            ['label' => $service->title],
+        ]])
         <span class="text-tertiary-fixed font-bold text-xs md:text-sm uppercase tracking-widest">Layanan</span>
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-on-primary mt-3 md:mt-4 font-heading">{{ $service->title }}</h1>
     </div>

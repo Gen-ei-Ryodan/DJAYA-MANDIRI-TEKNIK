@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
-use App\Models\Page;
+use App\Models\ArticleCategory;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\Project;
+use App\Models\ProjectCategory;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
@@ -39,6 +41,30 @@ class SitemapController extends Controller
                 ->setLastModificationDate(now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                 ->setPriority(0.7));
+
+        // Add product categories
+        foreach (ProductCategory::all() as $cat) {
+            $sitemap->add(Url::create(route('products.category', $cat->slug))
+                ->setLastModificationDate(now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.6));
+        }
+
+        // Add project categories
+        foreach (ProjectCategory::all() as $cat) {
+            $sitemap->add(Url::create(route('projects.category', $cat->slug))
+                ->setLastModificationDate(now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.6));
+        }
+
+        // Add article categories
+        foreach (ArticleCategory::all() as $cat) {
+            $sitemap->add(Url::create(route('articles.category', $cat->slug))
+                ->setLastModificationDate(now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.6));
+        }
 
         // Add products
         foreach (Product::all() as $product) {
