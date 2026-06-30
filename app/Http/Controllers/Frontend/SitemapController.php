@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleCategory;
+use App\Models\City;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Project;
@@ -64,6 +65,14 @@ class SitemapController extends Controller
                 ->setLastModificationDate(now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.6));
+        }
+
+        // Add city landing pages
+        foreach (City::all() as $city) {
+            $sitemap->add(Url::create(route('city.landing', $city->slug))
+                ->setLastModificationDate(now())
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.8));
         }
 
         // Add products
