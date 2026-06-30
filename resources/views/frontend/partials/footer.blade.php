@@ -43,16 +43,15 @@
             </ul>
         </div>
 
-        {{-- Legal --}}
+        {{-- Area Layanan --}}
         <div>
-            <h4 class="font-bold text-base md:text-lg mb-4 md:mb-6">Legal</h4>
+            <h4 class="font-bold text-base md:text-lg mb-4 md:mb-6">Area Layanan</h4>
             <ul class="space-y-2 md:space-y-3 text-sm md:text-label-md">
-                <li><a href="#" class="text-on-primary/60 hover:text-on-primary transition-colors">Kebijakan Privasi</a></li>
-                <li><a href="#" class="text-on-primary/60 hover:text-on-primary transition-colors">Syarat &amp; Ketentuan</a></li>
-                <li class="pt-3 md:pt-4 flex items-center gap-2 text-tertiary-fixed text-sm md:text-base">
-                    <span class="material-symbols-outlined">security</span>
-                    Protected by DMT Safety Standard
-                </li>
+                @php $footerCities = app(\App\Services\InternalLinkingService::class)->getMajorCities(5); @endphp
+                @foreach($footerCities as $fc)
+                <li><a href="{{ $fc['url'] }}" class="text-on-primary/60 hover:text-on-primary transition-colors">{{ $fc['label'] }}</a></li>
+                @endforeach
+                <li><a href="{{ route('home') }}" class="text-tertiary-fixed hover:text-tertiary-fixed-dim transition-colors font-bold text-xs">Lihat Semua Kota →</a></li>
             </ul>
         </div>
     </div>

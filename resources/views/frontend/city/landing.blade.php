@@ -217,4 +217,28 @@
         </a>
     </div>
 </section>
+
+{{-- Internal Links: Other Cities --}}
+@include('frontend.partials.city-links', [
+    'title' => 'Layanan Penangkal Petir di Kota Lain',
+    'subtitle' => 'Kami juga melayani pemasangan dan penyediaan material penangkal petir di kota-kota berikut:',
+    'excludeSlug' => $city->slug,
+    'limit' => 38,
+])
+
+{{-- Internal Links: Major Cities --}}
+<section class="py-8 md:py-12 bg-surface">
+    <div class="max-w-container-max mx-auto px-4 md:px-gutter">
+        <div class="flex flex-wrap justify-center gap-2 md:gap-3 text-xs md:text-sm">
+            <span class="text-on-surface-variant font-bold">Juga tersedia di:</span>
+            @php $majorCities = app(\App\Services\InternalLinkingService::class)->getMajorCities(); @endphp
+            @foreach($majorCities as $mc)
+            <a href="{{ $mc['url'] }}" class="text-on-background hover:text-tertiary-fixed-dim underline underline-offset-4">
+                {{ $mc['label'] }}
+            </a>
+            @if(!$loop->last)<span class="text-outline">|</span>@endif
+            @endforeach
+        </div>
+    </div>
+</section>
 @endsection
