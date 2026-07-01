@@ -23,7 +23,9 @@ class SeoMetaForm
                 Textarea::make('og_description')
                     ->columnSpanFull(),
                 FileUpload::make('og_image')
-                    ->image(),
+                    ->image()
+                    ->directory('seo-metas')
+                    ->disk('public'),
                 TextInput::make('twitter_card')
                     ->required()
                     ->default('summary_large_image'),

@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateSeoMeta extends CreateRecord
 {
     protected static string $resource = SeoMetaResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
