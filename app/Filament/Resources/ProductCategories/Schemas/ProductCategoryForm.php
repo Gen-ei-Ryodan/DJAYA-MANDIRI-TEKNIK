@@ -20,7 +20,9 @@ class ProductCategoryForm
                 Textarea::make('description')
                     ->columnSpanFull(),
                 FileUpload::make('image')
-                    ->image(),
+                    ->image()
+                    ->directory('product-categories')
+                    ->disk('public'),
                 TextInput::make('order')
                     ->required()
                     ->numeric()

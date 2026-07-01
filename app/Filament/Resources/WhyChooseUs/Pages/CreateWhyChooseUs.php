@@ -8,4 +8,9 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateWhyChooseUs extends CreateRecord
 {
     protected static string $resource = WhyChooseUsResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return $this->getResource()::getUrl('index');
+    }
 }
