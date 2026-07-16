@@ -5,43 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    {{-- SEO --}}
-    <title>{{ $seo->meta_title ?? 'DJAJA MANDIRI TEKNIK - Solusi Penangkal Petir Profesional' }}</title>
-    <meta name="description" content="{{ $seo->meta_description ?? 'Djaja Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}">
-    <meta name="keywords" content="{{ $seo->keywords ?? 'penangkal petir, jasa penangkal petir, material penangkal petir, sistem proteksi petir' }}">
-    <meta name="author" content="DJAJA MANDIRI TEKNIK">
+    {{-- Page Meta Title --}}
+    <title>{{ $metaTitle ?? $seo->meta_title ?? 'DJAYA MANDIRI TEKNIK - Solusi Penangkal Petir Profesional' }}</title>
+
+    {{-- Canonical URL --}}
+    <link rel="canonical" href="{{ $canonicalUrl ?? url()->current() }}">
+
+    {{-- Meta Description --}}
+    <meta name="description" content="{{ $metaDescription ?? $seo->meta_description ?? 'Djaya Mandiri Teknik hadir sebagai mitra terpercaya dalam jasa pemasangan penangkal petir dan penyedia material penangkal petir berkualitas.' }}">
+    <meta name="keywords" content="{{ $metaKeywords ?? $seo->keywords ?? 'penangkal petir, jasa penangkal petir, material penangkal petir, sistem proteksi petir' }}">
+    <meta name="author" content="DJAYA MANDIRI TEKNIK">
+
+    {{-- Robots --}}
+    <meta name="robots" content="{{ $metaRobots ?? 'index,follow' }}">
 
     {{-- Open Graph --}}
-    <meta property="og:title" content="{{ $seo->og_title ?? $seo->meta_title ?? 'DJAJA MANDIRI TEKNIK' }}">
-    <meta property="og:description" content="{{ $seo->og_description ?? $seo->meta_description ?? '' }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:image" content="{{ $seo->og_image ?? '' }}">
+    <meta property="og:locale" content="id_ID">
+    <meta property="og:title" content="{{ $ogTitle ?? $metaTitle ?? $seo->og_title ?? $seo->meta_title ?? 'DJAYA MANDIRI TEKNIK' }}">
+    <meta property="og:description" content="{{ $ogDescription ?? $metaDescription ?? $seo->og_description ?? $seo->meta_description ?? '' }}">
+    <meta property="og:type" content="{{ $ogType ?? 'website' }}">
+    <meta property="og:url" content="{{ $canonicalUrl ?? url()->current() }}">
+    <meta property="og:image" content="{{ $ogImage ?? $seo->og_image ?? $settings->getLogo() }}">
+    <meta property="og:site_name" content="{{ $settings->getCompanyName() }}">
 
     {{-- Twitter Card --}}
-    <meta name="twitter:card" content="{{ $seo->twitter_card ?? 'summary_large_image' }}">
-    <meta name="twitter:title" content="{{ $seo->meta_title ?? 'DJAJA MANDIRI TEKNIK' }}">
-    <meta name="twitter:description" content="{{ $seo->meta_description ?? '' }}">
+    <meta name="twitter:card" content="{{ $twitterCard ?? $seo->twitter_card ?? 'summary_large_image' }}">
+    <meta name="twitter:title" content="{{ $metaTitle ?? $seo->meta_title ?? 'DJAYA MANDIRI TEKNIK' }}">
+    <meta name="twitter:description" content="{{ $metaDescription ?? $seo->meta_description ?? '' }}">
+    <meta name="twitter:image" content="{{ $ogImage ?? $seo->og_image ?? $settings->getLogo() }}">
 
     {{-- Favicon --}}
     <link rel="icon" href="{{ $settings->getFavicon() }}" type="image/x-icon">
 
-    {{-- Schema.org --}}
+    {{-- Schema.org Organization --}}
     <script type="application/ld+json">
     {
-        "@@context": "https://schema.org",
-        "@@type": "Organization",
+        "@context": "https://schema.org",
+        "@type": "Organization",
         "name": "{{ $settings->getCompanyName() }}",
         "url": "{{ url('/') }}",
         "logo": "{{ $settings->getLogo() }}",
         "contactPoint": {
-            "@@type": "ContactPoint",
+            "@type": "ContactPoint",
             "telephone": "{{ $contact->telephone ?? '081393663669' }}",
             "contactType": "customer service",
             "areaServed": "ID"
         },
         "address": {
-            "@@type": "PostalAddress",
+            "@type": "PostalAddress",
             "streetAddress": "Jl. Kedungrejo Timur Gg Satria RT 6 RW 1",
             "addressLocality": "Sidoarjo",
             "addressRegion": "Jawa Timur",
@@ -50,12 +61,62 @@
     }
     </script>
 
+    {{-- Schema.org LocalBusiness --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "{{ $settings->getCompanyName() }}",
+        "image": "{{ $settings->getLogo() }}",
+        "@id": "{{ url('/') }}",
+        "url": "{{ url('/') }}",
+        "telephone": "{{ $contact->telephone ?? '081393663669' }}",
+        "priceRange": "$$",
+        "description": "Jasa pemasangan penangkal petir dan supplier material penangkal petir profesional di Jawa Timur.",
+        "areaServed": ["Surabaya", "Sidoarjo", "Malang", "Blitar", "Kediri", "Jawa Timur"],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Kedungrejo Timur Gg Satria RT 6 RW 1",
+            "addressLocality": "Sidoarjo",
+            "addressRegion": "Jawa Timur",
+            "addressCountry": "ID"
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+                "opens": "08:00",
+                "closes": "17:00"
+            }
+        ],
+        "sameAs": [
+            "https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings->getWhatsApp() ?? '6285704307095') }}"
+        ]
+    }
+    </script>
+
+    {{-- Schema.org BreadcrumbList --}}
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": {!! $breadcrumbSchema ?? '[]' !!}
+    }
+    </script>
+
+    @if(isset($pageSchema))
+    {{-- Page-specific Schema --}}
+    {!! $pageSchema !!}
+    @endif
+
     {{-- Tailwind CDN --}}
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" as="style" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" as="style" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
     {{-- Material Symbols --}}

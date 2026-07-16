@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\ArticleController;
+use App\Http\Controllers\Frontend\CityLandingController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ProductController;
@@ -35,9 +36,14 @@ Route::get('/kategori-artikel/{slug}', [ArticleController::class, 'category'])->
 // Contact
 Route::get('/kontak', [ContactController::class, 'index'])->name('contact');
 
+// City Landing Pages
+Route::get('/penangkal-petir-{citySlug}', [CityLandingController::class, 'show'])
+    ->where('citySlug', '[a-z-]+')
+    ->name('city.landing');
+
 // SEO
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 Route::get('/robots.txt', function () {
-    $content = "User-agent: *\nAllow: /\nSitemap: " . url('/sitemap.xml');
+    $content = "User-agent: *\nAllow: /\nDisallow: /admin\nDisallow: /filament\nDisallow: /livewire\n\nSitemap: " . url('/sitemap.xml');
     return response($content, 200)->header('Content-Type', 'text/plain');
 });

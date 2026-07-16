@@ -3,9 +3,11 @@
 @section('content')
 <section class="bg-on-background py-16 md:py-24 lg:py-32">
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
-        <a href="{{ route('articles') }}" class="text-tertiary-fixed font-bold text-xs md:text-sm flex items-center gap-2 mb-4 md:mb-6 hover:gap-3 transition-all">
-            <span class="material-symbols-outlined text-sm md:text-base">arrow_back</span>Kembali ke Artikel
-        </a>
+        @include('frontend.partials.breadcrumb', ['crumbs' => [
+            ['label' => 'Beranda', 'url' => route('home')],
+            ['label' => 'Artikel', 'url' => route('articles')],
+            ['label' => $article->title],
+        ]])
         <div class="flex flex-wrap items-center gap-2 md:gap-3 mb-3 md:mb-4">
             <span class="text-[10px] md:text-xs bg-tertiary-fixed/20 text-tertiary-fixed font-bold px-2 md:px-3 py-0.5 md:py-1 rounded-full">{{ $article->category->name ?? 'Artikel' }}</span>
             <span class="text-on-primary/60 text-xs md:text-sm">{{ $article->published_at ? $article->published_at->format('d M Y') : '' }}</span>
@@ -27,7 +29,7 @@
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
         @if($article->thumbnail)
         <div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg">
-            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" class="w-full aspect-video object-cover">
+            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" loading="lazy" class="w-full aspect-video object-cover">
         </div>
         @endif
         <div class="prose prose-sm md:prose-base max-w-none text-on-surface-variant">{!! $article->content !!}</div>

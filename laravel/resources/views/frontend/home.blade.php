@@ -7,7 +7,7 @@
         <div class="absolute inset-0 bg-on-background/70 z-10"></div>
         <img class="w-full h-full object-cover"
              src="{{ optional($hero)->background_image ? asset('storage/' . optional($hero)->background_image) : '' }}"
-             alt="Hero Background">
+             alt="{{ optional($hero)->title ?? 'Solusi Penangkal Petir Profesional - Djaya Mandiri Teknik' }}">
     </div>
 
     <div class="relative z-20 w-full px-4 md:px-gutter max-w-container-max mx-auto text-on-primary py-20 md:py-28 lg:py-36">

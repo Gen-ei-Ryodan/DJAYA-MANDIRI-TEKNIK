@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\SeoMetas\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
@@ -29,6 +30,19 @@ class SeoMetaForm
                 TextInput::make('twitter_card')
                     ->required()
                     ->default('summary_large_image'),
+                TextInput::make('canonical_url')
+                    ->label('Canonical URL')
+                    ->placeholder(url('/') . '/halaman')
+                    ->columnSpanFull(),
+                Select::make('robots')
+                    ->label('Robots Meta')
+                    ->options([
+                        'index,follow' => 'index, follow',
+                        'noindex,follow' => 'noindex, follow',
+                        'index,nofollow' => 'index, nofollow',
+                        'noindex,nofollow' => 'noindex, nofollow',
+                    ])
+                    ->default('index,follow'),
             ]);
     }
 }

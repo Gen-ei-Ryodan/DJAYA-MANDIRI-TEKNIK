@@ -3,9 +3,11 @@
 @section('content')
 <section class="bg-on-background py-16 md:py-24 lg:py-32">
     <div class="max-w-container-max mx-auto px-4 md:px-gutter">
-        <a href="{{ route('products') }}" class="text-tertiary-fixed font-bold text-xs md:text-sm flex items-center gap-2 mb-4 md:mb-6 hover:gap-3 transition-all">
-            <span class="material-symbols-outlined text-sm md:text-base">arrow_back</span>Kembali ke Produk
-        </a>
+        @include('frontend.partials.breadcrumb', ['crumbs' => [
+            ['label' => 'Beranda', 'url' => route('home')],
+            ['label' => 'Produk', 'url' => route('products')],
+            ['label' => $product->name],
+        ]])
         <span class="text-tertiary-fixed font-bold text-xs md:text-sm uppercase tracking-widest">{{ $product->category->name ?? 'Produk' }}</span>
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-on-primary mt-3 md:mt-4 font-heading">{{ $product->name }}</h1>
     </div>
@@ -17,6 +19,7 @@
             <div class="rounded-2xl overflow-hidden aspect-square shadow-lg bg-surface-container-low">
                 <img src="{{ $product->thumbnail ? asset('storage/' . $product->thumbnail) : '' }}"
                      alt="{{ $product->name }}"
+                     loading="lazy"
                      class="w-full h-full object-cover">
             </div>
             <div>

@@ -21,11 +21,13 @@ class SeoMetasTable
                     ->searchable(),
                 TextColumn::make('keywords')
                     ->searchable(),
-                TextColumn::make('og_title')
-                    ->searchable(),
-                ImageColumn::make('og_image'),
-                TextColumn::make('twitter_card')
-                    ->searchable(),
+                TextColumn::make('canonical_url')
+                    ->label('Canonical')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('robots')
+                    ->label('Robots')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

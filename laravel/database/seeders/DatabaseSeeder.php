@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             InitialDataSeeder::class,
             DummyDataSeeder::class,
+            ProvinceSeeder::class,
+            CitySeeder::class,
+            ArticleCitySeeder::class,
         ]);
     }
 }

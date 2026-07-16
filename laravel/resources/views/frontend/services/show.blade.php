@@ -3,9 +3,11 @@
 @section('content')
 <section class="bg-on-background py-16 md:py-24 lg:py-32">
     <div class="max-w-container-max mx-auto px-4 md:px-gutter">
-        <a href="{{ route('services') }}" class="text-tertiary-fixed font-bold text-xs md:text-sm flex items-center gap-2 mb-4 md:mb-6 hover:gap-3 transition-all">
-            <span class="material-symbols-outlined text-sm md:text-base">arrow_back</span>Kembali ke Layanan
-        </a>
+        @include('frontend.partials.breadcrumb', ['crumbs' => [
+            ['label' => 'Beranda', 'url' => route('home')],
+            ['label' => 'Layanan', 'url' => route('services')],
+            ['label' => $service->title],
+        ]])
         <span class="text-tertiary-fixed font-bold text-xs md:text-sm uppercase tracking-widest">Layanan</span>
         <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-on-primary mt-3 md:mt-4 font-heading">{{ $service->title }}</h1>
     </div>
@@ -15,7 +17,7 @@
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
         @if($service->image)
         <div class="rounded-2xl overflow-hidden aspect-video mb-8 md:mb-12 shadow-lg">
-            <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}" class="w-full h-full object-cover">
+            <img src="{{ asset('storage/' . $service->image) }}" alt="{{ $service->title }}" loading="lazy" class="w-full h-full object-cover">
         </div>
         @endif
 
@@ -31,6 +33,28 @@
                 <span class="material-symbols-outlined text-lg">whatsapp</span>
             </a>
         </div>
+
+        @if(isset($related) && $related->isNotEmpty())
+        <div class="border-t border-outline-variant/30 pt-10 md:pt-16 mt-10 md:mt-16">
+            <h3 class="text-xl md:text-2xl font-bold text-on-background mb-6 md:mb-8 font-heading text-center">Layanan Lainnya</h3>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                @foreach($related as $item)
+                <a href="{{ route('services.show', $item->slug) }}" class="group bg-surface-container-lowest overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 block">
+                    <div class="aspect-video overflow-hidden">
+                        <img src="{{ $item->image ? asset('storage/' . $item->image) : '' }}"
+                             alt="{{ $item->title }}"
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                             loading="lazy">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <h4 class="font-bold text-sm md:text-base text-on-background mt-1 font-heading">{{ $item->title }}</h4>
+                        <p class="text-xs md:text-sm text-on-surface-variant line-clamp-2 mt-1">{{ $item->description }}</p>
+                    </div>
+                </a>
+                @endforeach
+            </div>
+        </div>
+        @endif
     </div>
 </section>
 @endsection
