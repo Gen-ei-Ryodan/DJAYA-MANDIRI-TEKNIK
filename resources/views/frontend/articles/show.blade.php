@@ -29,7 +29,7 @@
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
         @if($article->thumbnail)
         <div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg">
-            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" class="w-full aspect-video object-cover">
+            <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" loading="lazy" class="w-full aspect-video object-cover">
         </div>
         @endif
         <div class="prose prose-sm md:prose-base max-w-none text-on-surface-variant">{!! $article->content !!}</div>

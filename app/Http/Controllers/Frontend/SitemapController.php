@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Project;
 use App\Models\ProjectCategory;
+use App\Models\Service;
 use Spatie\Sitemap\Sitemap;
 use Spatie\Sitemap\Tags\Url;
 
@@ -65,6 +66,14 @@ class SitemapController extends Controller
                 ->setLastModificationDate(now())
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.6));
+        }
+
+        // Add service detail pages
+        foreach (Service::where('is_active', true)->get() as $service) {
+            $sitemap->add(Url::create(route('services.show', $service->slug))
+                ->setLastModificationDate($service->updated_at)
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                ->setPriority(0.7));
         }
 
         // Add city landing pages

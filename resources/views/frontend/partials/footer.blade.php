@@ -9,14 +9,14 @@
                 &copy; {{ date('Y') }} {{ $settings->getCompanyName() ?? 'DJAYA MANDIRI TEKNIK' }}. All rights reserved. Premium Lightning Protection Systems.
             </p>
             <div class="flex gap-3 md:gap-4">
-                <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#">
-                    <span class="material-symbols-outlined text-lg md:text-xl">public</span>
+                <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $settings->getWhatsApp() ?? '6285704307095') }}" target="_blank" aria-label="WhatsApp">
+                    <span class="material-symbols-outlined text-lg md:text-xl">chat</span>
                 </a>
-                <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#">
-                    <span class="material-symbols-outlined text-lg md:text-xl">share</span>
+                <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="mailto:{{ $settings->getEmail() }}" target="_blank" aria-label="Email">
+                    <span class="material-symbols-outlined text-lg md:text-xl">mail</span>
                 </a>
-                <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="#">
-                    <span class="material-symbols-outlined text-lg md:text-xl">thumb_up</span>
+                <a class="w-9 h-9 md:w-10 md:h-10 rounded-full border border-on-primary/20 flex items-center justify-center hover:bg-tertiary-fixed hover:text-on-tertiary-fixed transition-all" href="{{ route('contact') }}" aria-label="Kontak">
+                    <span class="material-symbols-outlined text-lg md:text-xl">call</span>
                 </a>
             </div>
         </div>

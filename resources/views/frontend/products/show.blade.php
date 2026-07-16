@@ -19,6 +19,7 @@
             <div class="rounded-2xl overflow-hidden aspect-square shadow-lg bg-surface-container-low">
                 <img src="{{ $product->thumbnail ? asset('storage/' . $product->thumbnail) : '' }}"
                      alt="{{ $product->name }}"
+                     loading="lazy"
                      class="w-full h-full object-cover">
             </div>
             <div>

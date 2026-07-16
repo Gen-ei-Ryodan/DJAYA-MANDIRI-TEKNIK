@@ -25,6 +25,13 @@ class ServiceController extends Controller
         $seo = app(SeoService::class)->getMeta('services');
         $settings = app(\App\Services\SettingService::class);
 
+        // Ambil layanan terkait (lainnya)
+        $related = Service::where('is_active', true)
+            ->where('id', '!=', $service->id)
+            ->inRandomOrder()
+            ->take(3)
+            ->get();
+
         $metaTitle = $service->title . ' | ' . $settings->getCompanyName();
         $metaDescription = Str::limit(strip_tags($service->description), 160);
 
@@ -47,7 +54,8 @@ class ServiceController extends Controller
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 
         return view('frontend.services.show', compact(
-            'service', 'seo', 'metaTitle', 'metaDescription', 'breadcrumbSchema', 'pageSchema'
+            'service', 'seo', 'related',
+            'metaTitle', 'metaDescription', 'breadcrumbSchema', 'pageSchema'
         ));
     }
 }

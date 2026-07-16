@@ -22,7 +22,7 @@
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
         @if($project->thumbnail)
         <div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg">
-            <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" class="w-full aspect-video object-cover">
+            <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" loading="lazy" class="w-full aspect-video object-cover">
         </div>
         @endif
 
