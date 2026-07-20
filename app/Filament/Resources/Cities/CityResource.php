@@ -17,11 +17,11 @@ class CityResource extends Resource
 {
     protected static ?string $model = City::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedMapPin;
+    protected static \BackedEnum|string|null $navigationIcon = Heroicon::OutlinedMapPin;
 
     protected static ?string $navigationLabel = 'Kota';
 
-    protected static ?string $navigationGroup = 'SEO & Konten';
+    protected static \UnitEnum|string|null $navigationGroup = 'SEO & Konten';
 
     protected static ?int $navigationSort = 3;
 

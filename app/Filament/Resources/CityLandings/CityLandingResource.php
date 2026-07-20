@@ -17,11 +17,11 @@ class CityLandingResource extends Resource
 {
     protected static ?string $model = CityLanding::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedGlobeAsiaAustralia;
+    protected static \BackedEnum|string|null $navigationIcon = Heroicon::OutlinedGlobeAsiaAustralia;
 
     protected static ?string $navigationLabel = 'Landing Page Kota';
 
-    protected static ?string $navigationGroup = 'SEO & Konten';
+    protected static \UnitEnum|string|null $navigationGroup = 'SEO & Konten';
 
     protected static ?int $navigationSort = 1;
 

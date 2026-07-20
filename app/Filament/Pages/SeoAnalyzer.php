@@ -13,13 +13,13 @@ use Filament\Support\Icons\Heroicon;
 
 class SeoAnalyzer extends Page
 {
-    protected static ?string $navigationIcon = Heroicon::OutlinedChartBarSquare;
+    protected static \BackedEnum|string|null $navigationIcon = Heroicon::OutlinedChartBarSquare;
 
-    protected static string $view = 'filament.pages.seo-analyzer';
+    protected string $view = 'filament.pages.seo-analyzer';
 
     protected static ?string $navigationLabel = 'SEO Analyzer';
 
-    protected static ?string $navigationGroup = 'SEO & Konten';
+    protected static \UnitEnum|string|null $navigationGroup = 'SEO & Konten';
 
     protected static ?int $navigationSort = 0;
 
