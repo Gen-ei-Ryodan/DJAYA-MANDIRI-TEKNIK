@@ -40,19 +40,19 @@
     {{-- Schema.org Organization --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Organization",
+        "@@context": "https://schema.org",
+        "@@type": "Organization",
         "name": "{{ $settings->getCompanyName() }}",
         "url": "{{ url('/') }}",
         "logo": "{{ $settings->getLogo() }}",
         "contactPoint": {
-            "@type": "ContactPoint",
+            "@@type": "ContactPoint",
             "telephone": "{{ $contact->telephone ?? '081393663669' }}",
             "contactType": "customer service",
             "areaServed": "ID"
         },
         "address": {
-            "@type": "PostalAddress",
+            "@@type": "PostalAddress",
             "streetAddress": "Jl. Kedungrejo Timur Gg Satria RT 6 RW 1",
             "addressLocality": "Sidoarjo",
             "addressRegion": "Jawa Timur",
@@ -64,8 +64,8 @@
     {{-- Schema.org LocalBusiness --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@@context": "https://schema.org",
+        "@@type": "LocalBusiness",
         "name": "{{ $settings->getCompanyName() }}",
         "image": "{{ $settings->getLogo() }}",
         "@id": "{{ url('/') }}",
@@ -75,7 +75,7 @@
         "description": "Jasa pemasangan penangkal petir dan supplier material penangkal petir profesional di Jawa Timur.",
         "areaServed": ["Surabaya", "Sidoarjo", "Malang", "Blitar", "Kediri", "Jawa Timur"],
         "address": {
-            "@type": "PostalAddress",
+            "@@type": "PostalAddress",
             "streetAddress": "Jl. Kedungrejo Timur Gg Satria RT 6 RW 1",
             "addressLocality": "Sidoarjo",
             "addressRegion": "Jawa Timur",
@@ -83,7 +83,7 @@
         },
         "openingHoursSpecification": [
             {
-                "@type": "OpeningHoursSpecification",
+                "@@type": "OpeningHoursSpecification",
                 "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                 "opens": "08:00",
                 "closes": "17:00"
@@ -98,8 +98,8 @@
     {{-- Schema.org BreadcrumbList --}}
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
+        "@@context": "https://schema.org",
+        "@@type": "BreadcrumbList",
         "itemListElement": {!! $breadcrumbSchema ?? '[]' !!}
     }
     </script>
