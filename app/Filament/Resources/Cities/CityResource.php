@@ -19,6 +19,11 @@ class CityResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = Heroicon::OutlinedMapPin;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $navigationLabel = 'Kota';
 
     protected static \UnitEnum|string|null $navigationGroup = 'SEO & Konten';

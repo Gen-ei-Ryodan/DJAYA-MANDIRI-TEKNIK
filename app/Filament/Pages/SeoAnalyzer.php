@@ -23,6 +23,11 @@ class SeoAnalyzer extends Page
 
     protected static ?int $navigationSort = 0;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     public array $report = [];
 
     public int $totalIssues = 0;

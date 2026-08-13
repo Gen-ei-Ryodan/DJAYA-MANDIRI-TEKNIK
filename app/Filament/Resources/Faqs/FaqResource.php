@@ -19,6 +19,11 @@ class FaqResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = Heroicon::OutlinedQuestionMarkCircle;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $navigationLabel = 'FAQ';
 
     protected static \UnitEnum|string|null $navigationGroup = 'SEO & Konten';

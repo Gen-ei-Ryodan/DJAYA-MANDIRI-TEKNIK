@@ -19,6 +19,11 @@ class CityLandingResource extends Resource
 
     protected static \BackedEnum|string|null $navigationIcon = Heroicon::OutlinedGlobeAsiaAustralia;
 
+    public static function shouldRegisterNavigation(): bool
+    {
+        return false;
+    }
+
     protected static ?string $navigationLabel = 'Landing Page Kota';
 
     protected static \UnitEnum|string|null $navigationGroup = 'SEO & Konten';
