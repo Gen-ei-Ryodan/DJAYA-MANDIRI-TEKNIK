@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Contact;
 use App\Models\SeoMeta;
 use App\Services\SettingService;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        if ($this->app->environment('production')) {
+            URL::forceScheme('https');
+        }
+
         // Share settings globally for all views (used in layout)
         View::composer('*', function ($view) {
             $view->with('settings', app(SettingService::class));

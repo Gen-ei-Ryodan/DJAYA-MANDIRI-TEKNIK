@@ -19,7 +19,7 @@
 <section class="relative overflow-hidden bg-on-background">
     <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-on-background/70 z-10"></div>
-        @if($landing->hero_image)
+        @if($landing && $landing->hero_image)
         <img class="w-full h-full object-cover" src="{{ asset('storage/' . $landing->hero_image) }}" alt="{{ $heroTitle }}">
         @endif
     </div>
