@@ -24,20 +24,6 @@ class HeroSectionForm
                     ->image()
                     ->directory('hero')
                     ->disk('public'),
-                Textarea::make('statistics')
-                    ->columnSpanFull(),
-                TextInput::make('button1_text')
-                    ->required()
-                    ->default('Konsultasi Sekarang'),
-                TextInput::make('button1_url')
-                    ->required()
-                    ->default(url('#contact')),
-                TextInput::make('button2_text')
-                    ->required()
-                    ->default('Lihat Project'),
-                TextInput::make('button2_url')
-                    ->required()
-                    ->default('#projects'),
                 Toggle::make('is_active')
                     ->required(),
             ]);

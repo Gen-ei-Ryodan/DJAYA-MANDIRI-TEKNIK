@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Articles\Tables;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -14,31 +15,30 @@ class ArticlesTable
     {
         return $table
             ->columns([
+                ImageColumn::make('thumbnail')
+                    ->label('Photo')
+                    ->disk('public'),
                 TextColumn::make('category.name')
+                    ->label('Kategori')
                     ->searchable(),
                 TextColumn::make('title')
-                    ->searchable(),
+                    ->label('Judul')
+                    ->searchable()
+                    ->limit(40),
                 TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('thumbnail')
-                    ->searchable(),
-                TextColumn::make('seo_title')
-                    ->searchable(),
-                TextColumn::make('seo_keywords')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('published_at')
+                    ->label('Tanggal Terbit')
                     ->dateTime()
                     ->sortable(),
-                TextColumn::make('status')
-                    ->searchable(),
-                TextColumn::make('read_time')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -16,21 +16,12 @@ class HeroSectionsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('background_image'),
                 TextColumn::make('title')
                     ->searchable(),
                 TextColumn::make('subtitle')
-                    ->searchable(),
-                TextColumn::make('background_video')
-                    ->searchable(),
-                ImageColumn::make('background_image'),
-                TextColumn::make('button1_text')
-                    ->searchable(),
-                TextColumn::make('button1_url')
-                    ->searchable(),
-                TextColumn::make('button2_text')
-                    ->searchable(),
-                TextColumn::make('button2_url')
-                    ->searchable(),
+                    ->searchable()
+                    ->limit(40),
                 IconColumn::make('is_active')
                     ->boolean(),
                 TextColumn::make('created_at')
