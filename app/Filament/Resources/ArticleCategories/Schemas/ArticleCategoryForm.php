@@ -35,10 +35,6 @@ class ArticleCategoryForm
                     ]),
                 Textarea::make('description')
                     ->columnSpanFull(),
-                TextInput::make('order')
-                    ->hidden()
-                    ->numeric()
-                    ->default(fn () => (ArticleCategory::max('order') ?? 0) + 1),
             ]);
     }
 
