@@ -10,6 +10,8 @@ class ListArticleCategories extends ListRecords
 {
     protected static string $resource = ArticleCategoryResource::class;
 
+    public bool $isTableReordering = true;
+
     protected function getHeaderActions(): array
     {
         return [

@@ -10,6 +10,8 @@ class ListProductCategories extends ListRecords
 {
     protected static string $resource = ProductCategoryResource::class;
 
+    public bool $isTableReordering = true;
+
     protected function getHeaderActions(): array
     {
         return [

@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProductCategories\Tables;
 
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -15,14 +16,15 @@ class ProductCategoriesTable
     {
         return $table
             ->columns([
+                TextColumn::make('order')
+                    ->label('No')
+                    ->numeric(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('slug')
-                    ->searchable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 ImageColumn::make('image'),
-                TextColumn::make('order')
-                    ->numeric()
-                    ->sortable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -35,6 +37,9 @@ class ProductCategoriesTable
             ->filters([
                 //
             ])
+            ->reorderable('order')
+            ->reorderRecordsTriggerAction(fn (Action $action) => $action->hidden())
+            ->defaultSort('order')
             ->recordActions([
                 EditAction::make(),
             ])
