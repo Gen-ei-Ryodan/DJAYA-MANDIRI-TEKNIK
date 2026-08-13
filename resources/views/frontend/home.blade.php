@@ -259,7 +259,7 @@
             @endphp
             <a href="{{ route('projects.show', $project->slug) }}" class="{{ $colSpan }} group relative overflow-hidden rounded-xl md:rounded-2xl h-64 md:h-[400px] block">
                 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                     src="{{ $project->thumbnail ? asset('storage/' . $project->thumbnail) : '' }}"
+                     src="{{ ! empty($project->thumbnail) ? asset('storage/' . $project->thumbnail[0]) : '' }}"
                      alt="{{ $project->title }}">
                 <div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex items-end p-4 md:p-8">
                     <div>

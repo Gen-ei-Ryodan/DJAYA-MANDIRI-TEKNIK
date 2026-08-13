@@ -23,7 +23,7 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             @forelse($projects as $project)
             <a href="{{ route('projects.show', $project->slug) }}" class="group relative overflow-hidden rounded-2xl aspect-[4/3] block">
-                <img src="{{ $project->thumbnail ? asset('storage/' . $project->thumbnail) : '' }}"
+                <img src="{{ ! empty($project->thumbnail) ? asset('storage/' . $project->thumbnail[0]) : '' }}"
                      alt="{{ $project->title }}"
                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                      loading="lazy">

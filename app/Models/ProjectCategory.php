@@ -11,6 +11,24 @@ class ProjectCategory extends Model
 
     protected $casts = ['order' => 'integer'];
 
+    protected static function booted(): void
+    {
+        static::deleted(fn () => static::renumberOrders());
+    }
+
+    protected static function renumberOrders(): void
+    {
+        $order = 1;
+
+        foreach (static::query()->orderBy('order')->get() as $category) {
+            if ($category->order !== $order) {
+                $category->forceFill(['order' => $order])->save();
+            }
+
+            $order++;
+        }
+    }
+
     public function projects(): HasMany
     {
         return $this->hasMany(Project::class, 'category_id');

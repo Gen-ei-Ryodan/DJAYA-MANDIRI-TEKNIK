@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ProjectCategories\Tables;
 
+use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
@@ -14,13 +15,14 @@ class ProjectCategoriesTable
     {
         return $table
             ->columns([
+                TextColumn::make('order')
+                    ->label('No')
+                    ->numeric(),
                 TextColumn::make('name')
                     ->searchable(),
                 TextColumn::make('slug')
-                    ->searchable(),
-                TextColumn::make('order')
-                    ->numeric()
-                    ->sortable(),
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -33,6 +35,9 @@ class ProjectCategoriesTable
             ->filters([
                 //
             ])
+            ->reorderable('order')
+            ->reorderRecordsTriggerAction(fn (Action $action) => $action->hidden())
+            ->defaultSort('order')
             ->recordActions([
                 EditAction::make(),
             ])

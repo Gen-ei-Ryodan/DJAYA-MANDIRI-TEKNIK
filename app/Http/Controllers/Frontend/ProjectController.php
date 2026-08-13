@@ -32,7 +32,7 @@ class ProjectController extends Controller
 
         $metaTitle = ($project->seo_title ?? $project->title) . ' | ' . $settings->getCompanyName();
         $metaDescription = $project->seo_description ?? Str::limit(strip_tags($project->description), 160);
-        $ogImage = $project->thumbnail ? asset('storage/' . $project->thumbnail) : $settings->getLogo();
+        $ogImage = ! empty($project->thumbnail) ? asset('storage/' . $project->thumbnail[0]) : $settings->getLogo();
 
         $breadcrumbSchema = json_encode([
             ['@type' => 'ListItem', 'position' => 1, 'name' => 'Beranda', 'item' => url('/')],

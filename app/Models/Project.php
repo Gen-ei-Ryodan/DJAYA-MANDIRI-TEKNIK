@@ -14,6 +14,7 @@ class Project extends Model
     ];
 
     protected $casts = [
+        'thumbnail' => 'array',
         'gallery' => 'json',
         'before_after' => 'json',
         'featured' => 'boolean',

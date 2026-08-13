@@ -10,6 +10,8 @@ class ListProjectCategories extends ListRecords
 {
     protected static string $resource = ProjectCategoryResource::class;
 
+    public bool $isTableReordering = true;
+
     protected function getHeaderActions(): array
     {
         return [

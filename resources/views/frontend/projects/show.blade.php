@@ -20,9 +20,19 @@
 
 <section class="py-12 md:py-20 bg-surface">
     <div class="max-w-4xl mx-auto px-4 md:px-gutter">
-        @if($project->thumbnail)
-        <div class="rounded-2xl overflow-hidden mb-8 md:mb-12 shadow-lg">
-            <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}" loading="lazy" class="w-full aspect-video object-cover">
+        @if(! empty($project->thumbnail))
+        <div class="rounded-2xl overflow-hidden mb-4 md:mb-6 shadow-lg">
+            <img src="{{ asset('storage/' . $project->thumbnail[0]) }}" alt="{{ $project->title }}" loading="lazy" class="w-full aspect-video object-cover">
+        </div>
+        @endif
+
+        @if(count($project->thumbnail ?? []) > 1)
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 md:gap-4 mb-8 md:mb-12">
+            @foreach(array_slice($project->thumbnail, 1) as $photo)
+            <div class="rounded-xl overflow-hidden aspect-video">
+                <img src="{{ asset('storage/' . $photo) }}" alt="{{ $project->title }}" loading="lazy" class="w-full h-full object-cover">
+            </div>
+            @endforeach
         </div>
         @endif
 
@@ -37,7 +47,7 @@
                 @foreach($related as $item)
                 <a href="{{ route('projects.show', $item->slug) }}" class="group bg-surface-container-lowest overflow-hidden rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 block">
                     <div class="aspect-[16/9] overflow-hidden">
-                        <img src="{{ $item->thumbnail ? asset('storage/' . $item->thumbnail) : '' }}"
+                        <img src="{{ ! empty($item->thumbnail) ? asset('storage/' . $item->thumbnail[0]) : '' }}"
                              alt="{{ $item->title }}"
                              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                              loading="lazy">

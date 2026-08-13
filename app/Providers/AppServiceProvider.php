@@ -24,6 +24,12 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
 
+        // Make the public storage disk resolve URLs from the current request host,
+        // so storage links follow the host/port the site is actually served on.
+        if (! $this->app->runningInConsole()) {
+            config()->set('filesystems.disks.public.url', url('/storage'));
+        }
+
         // Share settings globally for all views (used in layout)
         View::composer('*', function ($view) {
             $view->with('settings', app(SettingService::class));

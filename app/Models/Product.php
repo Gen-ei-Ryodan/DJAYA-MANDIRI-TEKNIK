@@ -23,6 +23,20 @@ class Product extends Model
     {
         static::saved(fn () => cache()->forget('home.featured_products'));
         static::deleted(fn () => cache()->forget('home.featured_products'));
+        static::deleted(fn () => static::renumberOrders());
+    }
+
+    protected static function renumberOrders(): void
+    {
+        $order = 1;
+
+        foreach (static::query()->orderBy('order')->get() as $product) {
+            if ($product->order !== $order) {
+                $product->forceFill(['order' => $order])->save();
+            }
+
+            $order++;
+        }
     }
 
     public function category(): BelongsTo

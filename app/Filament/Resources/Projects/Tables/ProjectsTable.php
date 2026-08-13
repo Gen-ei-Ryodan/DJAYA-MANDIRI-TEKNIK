@@ -6,6 +6,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\IconColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
@@ -15,26 +16,26 @@ class ProjectsTable
     {
         return $table
             ->columns([
+                ImageColumn::make('thumbnail')
+                    ->label('Foto')
+                    ->disk('public'),
                 TextColumn::make('category.name')
+                    ->label('Kategori')
                     ->searchable(),
                 TextColumn::make('title')
-                    ->searchable(),
-                TextColumn::make('slug')
-                    ->searchable(),
+                    ->label('Judul')
+                    ->searchable()
+                    ->limit(40),
                 TextColumn::make('location')
-                    ->searchable(),
+                    ->label('Lokasi')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('year')
-                    ->searchable(),
-                TextColumn::make('client')
-                    ->searchable(),
-                TextColumn::make('thumbnail')
-                    ->searchable(),
+                    ->label('Tahun')
+                    ->toggleable(isToggledHiddenByDefault: true),
                 IconColumn::make('featured')
-                    ->boolean(),
-                TextColumn::make('seo_title')
-                    ->searchable(),
-                TextColumn::make('seo_keywords')
-                    ->searchable(),
+                    ->boolean()
+                    ->label('Unggulan'),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
