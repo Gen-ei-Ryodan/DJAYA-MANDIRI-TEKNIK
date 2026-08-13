@@ -18,6 +18,9 @@ class AboutSectionResource extends Resource
 {
     protected static ?string $model = AboutSection::class;
 
+    protected static \UnitEnum|string|null $navigationGroup = 'KONTEN';
+    protected static ?int $navigationSort = 2;
+
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
 
     public static function form(Schema $schema): Schema
