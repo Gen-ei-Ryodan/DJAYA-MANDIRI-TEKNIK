@@ -9,10 +9,6 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('projects', function (Blueprint $table) {
-            $table->json('thumbnail')->nullable()->change();
-        });
-
         DB::table('projects')->orderBy('id')->get()->each(function ($project) {
             $thumbnail = $project->thumbnail;
 
@@ -21,6 +17,10 @@ return new class extends Migration
                     'thumbnail' => json_encode([$thumbnail]),
                 ]);
             }
+        });
+
+        Schema::table('projects', function (Blueprint $table) {
+            $table->json('thumbnail')->nullable()->change();
         });
     }
 
