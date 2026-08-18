@@ -40,6 +40,6 @@ class SettingService
 
     public function getFavicon(): string
     {
-        return $this->get('favicon', asset('images/favicon.ico'));
+        return $this->get('favicon', asset('images/favicon.png'));
     }
 }

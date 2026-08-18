@@ -4,6 +4,7 @@ namespace App\Filament\Resources\ProductCategories\Tables;
 
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Tables\Columns\ImageColumn;
@@ -41,8 +42,12 @@ class ProductCategoriesTable
             ->reorderRecordsTriggerAction(fn (Action $action) => $action->hidden())
             ->defaultSort('order')
             ->recordActions([
-                EditAction::make(),
+                EditAction::make()
+                    ->hiddenLabel(),
+                DeleteAction::make()
+                    ->hiddenLabel(),
             ])
+            ->recordActionsColumnLabel('Actions')
             ->toolbarActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),

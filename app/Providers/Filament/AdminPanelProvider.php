@@ -40,7 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ->brandName('DJAYA MANDIRI TEKNIK')
             ->brandLogo(asset('images/logo.png'))
             ->brandLogoHeight('2.5rem')
-            ->favicon(asset('images/favicon.ico'))
+            ->favicon(asset('images/favicon.png'))
             ->spa()
             ->sidebarCollapsibleOnDesktop()
             ->collapsibleNavigationGroups(false)
