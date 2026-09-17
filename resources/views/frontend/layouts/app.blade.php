@@ -35,7 +35,9 @@
     <meta name="twitter:image" content="{{ $ogImage ?? $seo->og_image ?? $settings->getLogo() }}">
 
     {{-- Favicon --}}
-    <link rel="icon" href="{{ $settings->getFavicon() }}" type="image/x-icon">
+    <link rel="icon" href="{{ $settings->getFavicon() }}" sizes="any">
+    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
 
     {{-- Schema.org Organization --}}
     <script type="application/ld+json">
