@@ -32,7 +32,7 @@
             <img src="{{ asset('storage/' . $article->thumbnail) }}" alt="{{ $article->title }}" loading="lazy" class="w-full aspect-video object-cover">
         </div>
         @endif
-        <div class="prose prose-sm md:prose-base max-w-none text-on-surface-variant">{!! $article->content !!}</div>
+        <div class="article-content max-w-none text-on-surface-variant font-normal leading-relaxed">{!! $article->formatted_content !!}</div>
 
         @if($latest->isNotEmpty())
         <div class="border-t border-outline-variant/30 pt-8 md:pt-12 mt-10 md:mt-16">

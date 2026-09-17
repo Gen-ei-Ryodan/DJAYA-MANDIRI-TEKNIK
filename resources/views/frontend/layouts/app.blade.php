@@ -110,7 +110,7 @@
     @endif
 
     {{-- Tailwind CDN --}}
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
 
     {{-- Google Fonts --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,6 +238,66 @@
         body { font-family: 'Inter', sans-serif; }
         h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Poppins', sans-serif; }
         html { scroll-behavior: smooth; }
+
+        /* Article Typography Styles */
+        .article-content {
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: #334155;
+            text-align: justify;
+        }
+        .article-content p {
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+        .article-content h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #111c2d;
+            margin-top: 2.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.35;
+        }
+        .article-content h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111c2d;
+            margin-top: 1.75rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        .article-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .article-content ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .article-content li {
+            line-height: 1.7;
+        }
+        .article-content strong {
+            color: #111c2d;
+            font-weight: 600;
+        }
+        .article-content blockquote {
+            border-left: 4px solid #ffb95f;
+            padding-left: 1rem;
+            font-style: italic;
+            margin: 1.5rem 0;
+            color: #4b5563;
+        }
     </style>
 
     @stack('styles')

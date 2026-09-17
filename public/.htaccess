@@ -5,10 +5,22 @@
 
     RewriteEngine On
 
-    # Force HTTPS: redirect http → https
+    # 1. Redirect jayapetir.com (and all its subdomains) to https://jayapetir.online
+    RewriteCond %{HTTP_HOST} (?:^|\.)jayapetir\.com$ [NC]
+    RewriteRule ^(.*)$ https://jayapetir.online/$1 [L,R=301]
+
+    # 2. Redirect mail.jayapetir.online (cPanel autodiscover/webmail alias) to main domain
+    RewriteCond %{HTTP_HOST} ^mail\.jayapetir\.online$ [NC]
+    RewriteRule ^(.*)$ https://jayapetir.online/$1 [L,R=301]
+
+    # 3. Redirect www.jayapetir.online to https://jayapetir.online
+    RewriteCond %{HTTP_HOST} ^www\.jayapetir\.online$ [NC]
+    RewriteRule ^(.*)$ https://jayapetir.online/$1 [L,R=301]
+
+    # 4. Force HTTPS: redirect http -> https://jayapetir.online
     RewriteCond %{HTTPS} off
     RewriteCond %{HTTP:X-Forwarded-Proto} !https
-    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    RewriteRule ^(.*)$ https://jayapetir.online/$1 [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
